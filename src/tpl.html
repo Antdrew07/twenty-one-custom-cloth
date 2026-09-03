@@ -1,0 +1,751 @@
+<title>Twenty One Custom Cloth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@200;300;400;500&display=swap">
+<style>
+  :root{
+    --cream:#F2EFE7; --cream-raised:#EAE6DA; --cream-bright:#FBFAF6;
+    --ink:#17150F; --ink-solid:#0E0D0A; --body:#4A4639; --dim:#78725F;
+    --gold:#B08D45; --gold-ink:#7A5C22;
+    --rule:rgba(23,21,15,.16); --rule-2:rgba(23,21,15,.36);
+    --display:"Bodoni Moda",Didot,"Bodoni MT","Times New Roman",serif;
+    --garamond:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+    --ui:"Jost",Futura,"Avenir Next","Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--ui);
+       font-weight:400;font-size:16.5px;line-height:1.74;-webkit-font-smoothing:antialiased;}
+  .shell{max-width:1160px;margin:0 auto;padding:0 34px;}
+  @media(max-width:760px){.shell{padding:0 20px;}}
+  h1,h2,h3,h4,h5{margin:0;} p{margin:0;} img{display:block;max-width:100%;}
+
+  .display{font-family:var(--display);font-weight:400;line-height:1.06;text-wrap:balance;}
+  .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-ink);}
+  .eyebrow-dim{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);}
+  .body-copy{color:var(--body);max-width:64ch;font-size:16.5px;line-height:1.76;}
+  em{font-style:italic;color:var(--ink);} b{font-weight:500;color:var(--ink);}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--ink-solid);}
+  .hero img{width:100%;height:clamp(430px,72vh,760px);object-fit:cover;object-position:center 22%;}
+  .hero-veil{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,10,10,.42) 0%,rgba(10,10,10,.12) 38%,rgba(10,10,10,.78) 100%);}
+  .hero-inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+    max-width:1160px;margin:0 auto;padding:38px 34px 44px;}
+  .hero-top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .hero-top span{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,239,231,.82);}
+  .hero-bot h1{font-size:clamp(40px,7.4vw,80px);color:#F7F5EF;letter-spacing:-.015em;}
+  .hero-bot h1 i{display:block;font-style:italic;font-size:.46em;color:#D9BE84;margin-top:.16em;letter-spacing:0;}
+  .hero-bot p{margin-top:18px;max-width:46ch;color:rgba(242,239,231,.86);font-size:16px;line-height:1.7;}
+  @media(max-width:760px){.hero-inner{padding:26px 20px 32px;}}
+
+  /* ---------- sections ---------- */
+  section{padding:96px 0;border-top:1px solid var(--rule);}
+  .sec-head{display:flex;flex-direction:column;gap:13px;margin-bottom:54px;}
+  .sec-head h2{font-family:var(--display);font-size:clamp(30px,5vw,50px);font-weight:400;line-height:1.1;}
+  .sec-num{font-family:var(--display);font-style:italic;color:var(--gold-ink);font-size:15px;}
+
+  /* ---------- figures ---------- */
+  .fig{overflow:hidden;background:var(--cream-raised);border:1px solid var(--rule);}
+  .fig img{width:100%;height:100%;object-fit:cover;}
+  .fig-cap{padding:13px 16px;background:var(--cream-bright);border-top:1px solid var(--rule);
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;}
+  .split .fig img{height:clamp(340px,46vw,520px);}
+  .split .fig.fig-tall img{height:auto;}
+  @media(max-width:860px){.split{grid-template-columns:1fr;}}
+
+  .trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-top:56px;}
+  .trio .fig img{height:290px;}
+
+  .band{margin-top:56px;border:1px solid var(--rule);overflow:hidden;}
+  .band img{width:100%;height:clamp(200px,26vw,330px);object-fit:cover;}
+
+  /* ---------- suits ---------- */
+  .suits{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px;}
+  .suit{border:1px solid var(--rule);background:var(--cream-bright);display:flex;flex-direction:column;}
+  .suit-shot{line-height:0;overflow:hidden;background:var(--cream-raised);}
+  .suit-shot img{width:100%;aspect-ratio:2/3;height:auto;object-fit:cover;object-position:center 12%;}
+  .suit-cap{padding:18px 22px 24px;display:flex;flex-direction:column;gap:7px;border-top:1px solid var(--rule);}
+  .suit-cap h4{font-family:var(--display);font-size:20px;font-weight:400;}
+  .suit-cap .spec{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);}
+  .suit-cap p{font-size:13.5px;color:var(--body);line-height:1.64;}
+
+  .lapels{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-top:18px;}
+  .lapel{border:1px solid var(--rule);background:var(--cream-bright);display:flex;flex-direction:column;}
+  .lapel-shot{line-height:0;overflow:hidden;}
+  .lapel-shot img{width:100%;aspect-ratio:5/4;height:auto;object-fit:cover;}
+  .lapel-body{padding:18px 22px 24px;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--rule);}
+  .lapel h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;}
+  .lapel p{font-size:13px;color:var(--body);line-height:1.62;}
+
+  .cloths{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:18px;}
+  .cloth{border:1px solid var(--rule);display:flex;flex-direction:column;}
+  .cloth .sw{line-height:0;overflow:hidden;}
+  .cloth .sw img{width:100%;height:118px;object-fit:cover;}
+  .cloth .lb{padding:13px 15px;background:var(--cream-bright);display:flex;flex-direction:column;gap:3px;}
+  .cloth .lb strong{font-size:12.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);}
+  .cloth .lb span{font-size:12px;color:var(--dim);}
+
+  /* ---------- packages ---------- */
+  .pack{margin-bottom:96px;} .pack:last-child{margin-bottom:0;}
+  .pack-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;padding-bottom:15px;
+    margin-bottom:12px;border-bottom:1px solid var(--rule-2);}
+  .pack-head h3{font-family:var(--display);font-size:clamp(28px,4.4vw,44px);font-weight:400;}
+  .concept-letter{font-family:var(--display);font-size:13px;font-style:italic;color:var(--gold-ink);letter-spacing:.1em;}
+  .world-ref{margin-left:auto;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);}
+  .pack-line{color:var(--body);font-size:15.5px;max-width:62ch;margin-bottom:30px;}
+  .pack-sub{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink);margin:38px 0 14px;}
+
+  .concept-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;}
+  @media(max-width:860px){.concept-grid{grid-template-columns:1fr;}}
+  .plate{display:flex;align-items:center;justify-content:center;padding:62px 26px;border:1px solid var(--rule);}
+  .plate-ink{background:var(--ink-solid);color:var(--cream);border-color:var(--ink-solid);}
+  .plate-ink svg{max-width:230px;}
+  .plate svg{width:100%;height:auto;display:block;max-width:330px;}
+  .concept-side{display:flex;flex-direction:column;gap:18px;}
+  .sizes{border:1px solid var(--rule);background:var(--cream-bright);padding:24px 26px;display:flex;
+    align-items:flex-end;gap:30px;flex-wrap:wrap;color:var(--ink);}
+  .sizes figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:11px;}
+  .sizes svg{display:block;height:auto;}
+  .sizes figcaption{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);font-variant-numeric:tabular-nums;}
+  .concept-notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:32px;margin-top:30px;}
+  .concept-notes h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:9px;font-weight:400;}
+  .concept-notes p{font-size:14.5px;color:var(--body);line-height:1.74;}
+
+  /* mock browser */
+  .mock{border:1px solid var(--rule-2);overflow:hidden;}
+  .mock-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:var(--cream-raised);
+    border-bottom:1px solid var(--rule);}
+  .mock-bar i{width:9px;height:9px;border-radius:50%;background:var(--rule-2);display:block;}
+  .mock-bar span{margin-left:10px;font-size:10.5px;letter-spacing:.14em;color:var(--dim);}
+  .mk{padding:32px 34px 0;}
+  .mk-nav{display:flex;align-items:center;gap:26px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:0;}
+  .nav-logo{margin-right:auto;display:flex;align-items:center;}
+  .nav-logo svg{height:36px;width:auto;display:block;}
+  @media(max-width:600px){.nav-logo svg{height:28px;}}
+  .mk-nav a{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;}
+  .mk-hero{display:grid;grid-template-columns:1.02fr .98fr;gap:0;align-items:stretch;}
+  @media(max-width:720px){.mk-hero{grid-template-columns:1fr;}}
+  .mk-copy{padding:44px 34px 48px 0;display:flex;flex-direction:column;justify-content:center;}
+  @media(max-width:720px){.mk-copy{padding:32px 0 36px;}.mk-strip{padding:0 20px;}}
+  .mk-shot{overflow:hidden;}
+  .mk-shot img{width:100%;height:100%;min-height:340px;object-fit:cover;object-position:center 16%;}
+  .mk h5{font-weight:400;margin:0 0 18px;}
+  .mk .sub{font-size:14.5px;line-height:1.72;max-width:40ch;margin:0 0 26px;}
+  .mk .cta{display:inline-block;align-self:flex-start;padding:13px 26px;font-size:10.5px;
+    letter-spacing:.2em;text-transform:uppercase;border:1px solid;}
+  .mk-strip{display:flex;border-top:1px solid;padding:0 34px;}
+  .mk-strip div{flex:1;padding:15px 4px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;}
+
+  .w-ivory{background:#F4F1E9;color:#17150F;}
+  .w-ivory .mk-nav{border-bottom:1px solid rgba(23,21,15,.2);}
+  .w-ivory .mk-nav a{color:#6B6553;}
+  .w-ivory h5{font-family:var(--display);font-size:clamp(28px,4vw,44px);line-height:1.08;}
+  .w-ivory h5 i{color:#7A5C22;}
+  .w-ivory .sub{color:#4A4639;}
+  .w-ivory .cta{border-color:#17150F;color:#F4F1E9;background:#17150F;}
+  .w-ivory .mk-strip{border-color:rgba(23,21,15,.2);}
+  .w-ivory .mk-strip div{color:#6B6553;}
+
+  .w-savile{background:#EDE7DA;color:#1C1A17;}
+  .w-savile .mk-nav{border-bottom:1px solid rgba(28,26,23,.22);}
+  .w-savile .mk-nav a{color:#635D50;}
+  .w-savile h5{font-family:var(--garamond);font-size:clamp(30px,4.4vw,48px);line-height:1.1;font-weight:400;}
+  .w-savile h5 i{color:#6E2733;}
+  .w-savile .sub{color:#464034;}
+  .w-savile .cta{border-color:#6E2733;color:#6E2733;background:transparent;}
+  .w-savile .mk-strip{border-color:rgba(28,26,23,.22);}
+  .w-savile .mk-strip div{color:#635D50;}
+
+  .w-chrome{background:#FFFFFF;color:#000;}
+  .w-chrome .mk-nav{border-bottom:1px solid #000;}
+  .w-chrome .mk-nav a{color:#000;}
+  .w-chrome h5{font-family:var(--ui);font-weight:200;font-size:clamp(28px,4.2vw,46px);line-height:1.08;
+    letter-spacing:-.01em;text-transform:uppercase;}
+  .w-chrome h5 i{font-style:normal;border-bottom:2px solid #000;}
+  .w-chrome .sub{color:#3C3C3C;}
+  .w-chrome .cta{border-color:#000;color:#fff;background:#000;}
+  .w-chrome .mk-strip{border-color:#000;}
+  .w-chrome .mk-strip div{color:#000;}
+
+  .world-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:32px;margin-top:30px;}
+  .world-meta h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:9px;font-weight:400;}
+  .world-meta p{font-size:14.5px;color:var(--body);line-height:1.74;}
+  .pal{display:flex;border:1px solid var(--rule);margin-top:14px;}
+  .pal div{flex:1;height:60px;display:flex;align-items:flex-end;padding:7px 8px;}
+  .pal span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-variant-numeric:tabular-nums;}
+
+  /* --- the mark, made physical --- */
+  .materials{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px;}
+  .mat{border:1px solid var(--rule);display:flex;flex-direction:column;overflow:hidden;}
+  .mat-inner{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:34px 30px;}
+  .mat-inner svg{width:100%;max-width:230px;height:auto;display:block;}
+  .mat cite{padding:12px 16px;border-top:1px solid var(--rule);font-size:10px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--dim);background:var(--cream-bright);font-style:normal;}
+  .mat-foil .mat-inner{background:radial-gradient(120% 100% at 30% 0%,#1E1C18 0%,#0B0A08 70%);}
+  .mat-deboss .mat-inner{background:linear-gradient(155deg,#F0EBDD 0%,#DFD8C6 100%);}
+  .mat-deboss svg{filter:drop-shadow(0 2px 0 rgba(255,255,255,1)) drop-shadow(0 -1.5px 1.5px rgba(74,60,32,.75)) drop-shadow(0 0 6px rgba(74,60,32,.18));}
+  .mat-cloth .mat-inner{background-size:cover;background-position:center;position:relative;}
+  .mat-cloth .mat-inner::after{content:"";position:absolute;inset:0;background:rgba(8,8,10,.52);}
+  .mat-cloth svg{position:relative;z-index:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.55));}
+  .mat-metal .mat-inner{background:linear-gradient(118deg,#BFBDB7 0%,#94928E 26%,#E4E2DC 48%,#8E8C88 70%,#C8C6C0 100%);}
+  .mat-metal svg{filter:drop-shadow(0 1.5px 0 rgba(255,255,255,.85)) drop-shadow(0 -1px 1.5px rgba(0,0,0,.55));}
+
+  .includes{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    border:1px solid var(--rule);background:var(--cream-bright);margin-top:26px;}
+  .includes div{padding:18px 20px;border-right:1px solid var(--rule);}
+  .includes div:last-child{border-right:0;}
+  .includes strong{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:5px;}
+  .includes span{font-size:13.5px;color:var(--body);line-height:1.6;}
+  @media(max-width:760px){.includes div{border-right:0;border-bottom:1px solid var(--rule);}.includes div:last-child{border-bottom:0;}}
+
+  .decide{border:1px solid var(--rule-2);background:var(--cream-bright);padding:36px 32px;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:34px;}
+  .decide h4{font-family:var(--display);font-size:21px;font-weight:400;margin-bottom:10px;}
+  .decide p{font-size:14.5px;color:var(--body);line-height:1.74;}
+  .decide .pick{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink);display:block;margin-bottom:13px;}
+  .decide .featured{border-left:2px solid var(--gold);padding-left:22px;}
+
+  footer{padding:50px 0 40px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--rule);}
+  footer p{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);}
+  .credit{padding-bottom:80px;font-size:12px;color:var(--dim);line-height:1.7;max-width:70ch;}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <linearGradient id="foil" x1="0" y1="0" x2="0.25" y2="1">
+    <stop offset="0%"   stop-color="#FCF2D8"/>
+    <stop offset="20%"  stop-color="#DFC287"/>
+    <stop offset="42%"  stop-color="#B5934D"/>
+    <stop offset="58%"  stop-color="#F2E1B4"/>
+    <stop offset="78%"  stop-color="#C7A55C"/>
+    <stop offset="100%" stop-color="#F8EDCE"/>
+  </linearGradient>
+  <linearGradient id="steel" x1="0" y1="0" x2="0.3" y2="1">
+    <stop offset="0%"   stop-color="#2C2C30"/>
+    <stop offset="50%"  stop-color="#141416"/>
+    <stop offset="100%" stop-color="#38383C"/>
+  </linearGradient>
+</defs></svg>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero">
+  <img src="{{IMG:403082364}}" alt="Two men in tailored overcoats photographed in a doorway">
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <div class="hero-top">
+      <span>Twenty One Custom Cloth</span>
+      <span>Brand &amp; Website Packages</span>
+    </div>
+    <div class="hero-bot">
+      <h1 class="display">Twenty One<i>Custom Cloth</i></h1>
+      <p>Three complete packages for the house — each with its own mark, its own typefaces and its
+      own website. Photographed in black and white, printed on cream.</p>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+
+  <!-- ===================== THE HOUSE ===================== -->
+  <section style="border-top:none;">
+    <div class="sec-head">
+      <span class="sec-num">Part One</span>
+      <h2 class="display">The house</h2>
+      <p class="body-copy">
+        Before the logo and before the website, the thing being sold: a suit cut for one man and
+        nobody else. Everything in these packages exists to make that promise legible in about four
+        seconds, which is all the time a website gets.
+      </p>
+    </div>
+
+    <div class="split">
+      <div class="fig fig-tall">
+        <img src="{{IMG:owner_portrait}}" alt="Portrait of the founder of Twenty One Custom Cloth in a windowpane suit">
+        <div class="fig-cap">The founder</div>
+      </div>
+      <div>
+        <p class="eyebrow">The proposition</p>
+        <h3 class="display" style="font-size:clamp(26px,3.6vw,38px);margin:14px 0 20px;">
+          Measured once.<br><em>Remembered for good.</em>
+        </h3>
+        <p class="body-copy">
+          A pattern is cut for the client and kept on file. Every suit after the first begins where
+          the last one finished — no tape, no guesswork, no starting over. That single idea is what
+          separates a made-to-measure house from a shop that sells suits, and it is the spine of
+          all three packages.
+        </p>
+      </div>
+    </div>
+
+    <div class="trio">
+      <div class="fig">
+        <img src="{{IMG:269943828}}" alt="A pattern chalked onto dark cloth being measured with a rule">
+        <div class="fig-cap">The pattern</div>
+      </div>
+      <div class="fig">
+        <img src="{{IMG:451514353}}" alt="A client having his chest measured over a tailored jacket">
+        <div class="fig-cap">The measure</div>
+      </div>
+      <div class="fig">
+        <img src="{{IMG:247846740}}" alt="A tailor checking a sleeve length on a jacket in a dark studio">
+        <div class="fig-cap">The fitting</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE CUT ===================== -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">Part Two</span>
+      <h2 class="display">The cut</h2>
+      <p class="body-copy">
+        Four silhouettes the house will offer, drawn as tailor's flats. These same drawings become
+        the style selector on the website, so a client chooses his cut before he ever walks in.
+      </p>
+    </div>
+
+    <div class="suits">
+      <div class="suit">
+        <div class="suit-shot"><img src="{{IMG:cut_single}}" alt="Man wearing a single-breasted notch lapel suit"></div>
+        <div class="suit-cap">
+          <span class="spec">Two-button &middot; Notch</span>
+          <h4>The Single-Breasted</h4>
+          <p>The working suit. Notch lapel, two buttons, flapped pockets. Reads correctly from a
+          courthouse to a client dinner.</p>
+        </div>
+      </div>
+      <div class="suit">
+        <div class="suit-shot"><img src="{{IMG:cut_double}}" alt="Man wearing a double-breasted peak lapel coat"></div>
+        <div class="suit-cap">
+          <span class="spec">Six-on-two &middot; Peak</span>
+          <h4>The Double-Breasted</h4>
+          <p>Authority. Peak lapels, six buttons with two fastening, always worn closed. The hardest
+          jacket to buy off a rack — the best argument for made-to-measure.</p>
+        </div>
+      </div>
+      <div class="suit">
+        <div class="suit-shot"><img src="{{IMG:cut_three}}" alt="Man wearing a waistcoat and trousers, three-piece suiting"></div>
+        <div class="suit-cap">
+          <span class="spec">Five-button &middot; Waistcoat</span>
+          <h4>The Three-Piece</h4>
+          <p>Jacket, trouser and waistcoat. One extra fitting, a whole new silhouette. Weddings
+          live here.</p>
+        </div>
+      </div>
+      <div class="suit">
+        <div class="suit-shot"><img src="{{IMG:cut_dinner}}" alt="Man wearing a velvet dinner jacket with satin-faced lapels"></div>
+        <div class="suit-cap">
+          <span class="spec">One-button &middot; Satin peak</span>
+          <h4>The Dinner Jacket</h4>
+          <p>Black tie. Velvet or barathea, lapels faced in satin, one button, no vents. Shawl
+          collar on request. Sold once and worn for twenty years.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="eyebrow-dim" style="margin-top:56px;">The three lapels &mdash; the detail that decides the jacket</p>
+    <div class="lapels">
+      <div class="lapel">
+        <div class="lapel-shot"><img src="{{IMG:lap_notch}}" alt="Close detail of a notch lapel"></div>
+        <div class="lapel-body"><h4>Notch</h4>
+        <p>The default. A step cut where the collar meets the lapel. Business, daily, unremarkable in the best way.</p></div>
+      </div>
+      <div class="lapel">
+        <div class="lapel-shot"><img src="{{IMG:lap_peak}}" alt="Close detail of a peak lapel on a double-breasted coat"></div>
+        <div class="lapel-body"><h4>Peak</h4>
+        <p>Points sweep upward toward the shoulder. Formal, broadening, and standard on every double-breasted jacket.</p></div>
+      </div>
+      <div class="lapel">
+        <div class="lapel-shot"><img src="{{IMG:lap_satin}}" alt="Close detail of a satin-faced evening lapel"></div>
+        <div class="lapel-body"><h4>Satin facing</h4>
+        <p>The evening tell. Lapels faced in satin against matte cloth — the one detail that separates a dinner jacket from a dark suit.</p></div>
+      </div>
+    </div>
+
+    <div class="band">
+      <img src="{{IMG:308501877}}" alt="Macro detail of dark worsted suit cloth and a jetted pocket">
+    </div>
+
+    <p class="eyebrow-dim" style="margin-top:56px;">The cloth book &mdash; four openers</p>
+    <div class="cloths">
+      <div class="cloth"><div class="sw"><img src="{{IMG:cl_pinstripe}}" alt="Pinstripe suiting cloth"></div>
+        <div class="lb"><strong>Pinstripe</strong><span>Worsted &amp; chalk &middot; the boardroom</span></div></div>
+      <div class="cloth"><div class="sw"><img src="{{IMG:cl_herring}}" alt="Herringbone suiting cloth"></div>
+        <div class="lb"><strong>Herringbone</strong><span>Woven twill &middot; year-round</span></div></div>
+      <div class="cloth"><div class="sw"><img src="{{IMG:cl_birdseye}}" alt="Tweed suiting cloth with pocket detail"></div>
+        <div class="lb"><strong>Tweed</strong><span>Woollen &middot; autumn weight</span></div></div>
+      <div class="cloth"><div class="sw"><img src="{{IMG:cl_glen}}" alt="Glen check suiting cloth"></div>
+        <div class="lb"><strong>Glen check</strong><span>Prince of Wales &middot; the third suit</span></div></div>
+    </div>
+  </section>
+
+  <!-- ===================== PACKAGES ===================== -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">Part Three</span>
+      <h2 class="display">Three packages</h2>
+      <p class="body-copy">
+        Each package is a matched set — logo, typefaces, palette and homepage drawn together. The
+        mark sitting in each site header below belongs there, and would look wrong in either of the
+        others. Pick one package rather than parts.
+      </p>
+    </div>
+
+    <!-- ===== I. IVORY ===== -->
+    <article class="pack">
+      <div class="pack-head">
+        <span class="concept-letter">Package I</span>
+        <h3 class="display">Ivory</h3>
+        <span class="world-ref">Mark: The Notch &middot; After Tom Ford</span>
+      </div>
+      <p class="pack-line">
+        A geometric mark drawn from the lapel notch, set against warm ivory with black used like ink
+        and antique gold on the details. The highest perceived price of the three.
+      </p>
+
+      <p class="pack-sub">The mark &mdash; The Notch</p>
+      <div class="concept-grid">
+        <div class="plate" style="background:#F4F1E9;color:#17150F;">
+          <svg viewBox="0 0 240 250" role="img" aria-label="The Notch: 21 inside a frame cut with a lapel notch">
+            <path d="M 40 46 L 96 46 L 118 70 L 140 46 L 214 46 L 214 214 L 40 214 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="miter"/>
+            <path d="M 96 46 L 118 70 L 140 46" fill="none" stroke="#B08D45" stroke-width="3"/>
+            <text x="127" y="166" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="78" font-weight="500" letter-spacing="4">21</text></svg>
+        </div>
+        <div class="concept-side">
+          <div class="plate plate-ink">
+            <svg viewBox="0 0 260 300" role="img" aria-label="The Notch reversed on black with the full name">
+              <path d="M 62 26 L 106 26 L 124 46 L 142 26 L 198 26 L 198 170 L 62 170 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M 106 26 L 124 46 L 142 26" fill="none" stroke="#C0A062" stroke-width="1.9"/>
+              <text x="131" y="132" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="62" letter-spacing="3">21</text>
+              <text x="132" y="222" text-anchor="middle" fill="currentColor" font-family="Jost, Futura, sans-serif" font-size="15" letter-spacing="7">TWENTY ONE</text>
+              <text x="132" y="248" text-anchor="middle" fill="currentColor" font-family="Jost, Futura, sans-serif" font-size="15" letter-spacing="7">CUSTOM CLOTH</text></svg>
+          </div>
+          <div class="sizes">
+            <figure><svg width="70" height="73" viewBox="0 0 240 250" aria-hidden="true">
+              <path d="M 40 46 L 96 46 L 118 70 L 140 46 L 214 46 L 214 214 L 40 214 Z" fill="none" stroke="currentColor" stroke-width="3.6"/>
+              <text x="127" y="166" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="78" font-weight="500" letter-spacing="4">21</text></svg><figcaption>70 px</figcaption></figure>
+            <figure><svg width="40" height="42" viewBox="0 0 240 250" aria-hidden="true">
+              <path d="M 40 46 L 96 46 L 118 70 L 140 46 L 214 46 L 214 214 L 40 214 Z" fill="none" stroke="currentColor" stroke-width="6"/>
+              <text x="127" y="166" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="78" font-weight="500" letter-spacing="4">21</text></svg><figcaption>40 px</figcaption></figure>
+            <figure><svg width="22" height="23" viewBox="0 0 240 250" aria-hidden="true">
+              <path d="M 40 46 L 96 46 L 118 70 L 140 46 L 214 46 L 214 214 L 40 214 Z" fill="none" stroke="currentColor" stroke-width="10"/>
+              <text x="127" y="166" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="78" font-weight="500" letter-spacing="4">21</text></svg><figcaption>22 px</figcaption></figure>
+          </div>
+        </div>
+      </div>
+      <div class="concept-notes">
+        <div><h4>The idea</h4><p>A plain frame with one corner of the top edge cut at the angle of a <em>lapel notch</em> — the gap where collar meets lapel on every tailored jacket ever made. Off-centre, because a real notch is off-centre.</p></div>
+        <div><h4>Why it is his</h4><p>Nobody else can use it. A crown belongs to everyone; a lapel notch belongs to tailoring. A man who wears suits reads it before he can explain it.</p></div>
+        <div><h4>The honest risk</h4><p>It asks for confidence. At a glance it is a rectangle with a nick in it, and it only fully pays off once it sits on a label beside an actual lapel.</p></div>
+      </div>
+
+
+      <p class="pack-sub">The mark, made physical</p>
+      <div class="materials">
+        <div class="mat mat-foil"><div class="mat-inner"><svg viewBox="0 0 240 250" role="img" aria-label="The Notch mark">
+            <path d="M 40 46 L 96 46 L 118 70 L 140 46 L 214 46 L 214 214 L 40 214 Z" fill="none" stroke="url(#foil)" stroke-width="4"/>
+            <text x="127" y="168" text-anchor="middle" fill="url(#foil)" font-family="Bodoni Moda, Didot, serif" font-size="80" font-weight="500" letter-spacing="4">21</text></svg></div><cite>Gold foil on ink</cite></div>
+        <div class="mat mat-deboss"><div class="mat-inner"><svg viewBox="0 0 240 250" role="img" aria-label="The Notch mark">
+            <path d="M 40 46 L 96 46 L 118 70 L 140 46 L 214 46 L 214 214 L 40 214 Z" fill="none" stroke="#C2B79C" stroke-width="4"/>
+            <text x="127" y="168" text-anchor="middle" fill="#C2B79C" font-family="Bodoni Moda, Didot, serif" font-size="80" font-weight="500" letter-spacing="4">21</text></svg></div><cite>Blind deboss, cream stock</cite></div>
+        <div class="mat mat-cloth"><div class="mat-inner" style="background-image:url({{IMG:cl_herring}})"><svg viewBox="0 0 240 250" role="img" aria-label="The Notch mark">
+            <path d="M 40 46 L 96 46 L 118 70 L 140 46 L 214 46 L 214 214 L 40 214 Z" fill="none" stroke="#F6F4EE" stroke-width="4"/>
+            <text x="127" y="168" text-anchor="middle" fill="#F6F4EE" font-family="Bodoni Moda, Didot, serif" font-size="80" font-weight="500" letter-spacing="4">21</text></svg></div><cite>Woven label</cite></div>
+        <div class="mat mat-metal"><div class="mat-inner"><svg viewBox="0 0 240 250" role="img" aria-label="The Notch mark">
+            <path d="M 40 46 L 96 46 L 118 70 L 140 46 L 214 46 L 214 214 L 40 214 Z" fill="none" stroke="#33312D" stroke-width="4"/>
+            <text x="127" y="168" text-anchor="middle" fill="#33312D" font-family="Bodoni Moda, Didot, serif" font-size="80" font-weight="500" letter-spacing="4">21</text></svg></div><cite>Engraved button</cite></div>
+      </div>
+      <p class="pack-sub">The website</p>
+      <div class="mock">
+        <div class="mock-bar"><i></i><i></i><i></i><span>twentyonecustomcloth.com</span></div>
+        <div class="w-ivory">
+          <div class="mk">
+            <nav class="mk-nav">
+              <span class="nav-logo"><svg viewBox="0 0 300 62" role="img" aria-label="Twenty One Custom Cloth">
+                <path d="M4 10 L20 10 L26 18 L32 10 L54 10 L54 56 L4 56 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <text x="29" y="46" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="27">21</text>
+                <text x="74" y="31" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="19" letter-spacing="3.2">TWENTY ONE</text>
+                <text x="75" y="49" fill="currentColor" font-family="Jost, Futura, sans-serif" font-size="9.5" letter-spacing="4.2">CUSTOM CLOTH</text></svg></span>
+              <a href="#i">The House</a><a href="#i">Cloth</a><a href="#i">Appointments</a>
+            </nav>
+            <div class="mk-hero">
+              <div class="mk-copy">
+                <h5 id="i">Every man owns a suit.<br><i>Almost none own one that fits.</i></h5>
+                <p class="sub">Made to your measurements alone. Three suits, three shirts, one fitting — and a pattern kept on file for every suit after it.</p>
+                <span class="cta">Book a fitting</span>
+              </div>
+              <div class="mk-shot"><img src="{{IMG:382516634}}" alt="A man in evening dress at a bar"></div>
+            </div>
+          </div>
+          <div class="mk-strip"><div>Bespoke</div><div>Made to Measure</div><div>Shirting</div><div>By Appointment</div></div>
+        </div>
+      </div>
+      <div class="world-meta">
+        <div><h4>The feeling</h4><p>Warm ivory paper with black used like ink. Evening photography, generous margins, and a page that never raises its voice. The most classically expensive of the three.</p></div>
+        <div><h4>Type &amp; colour</h4><p>Bodoni Moda — the Didone <em>Vogue</em> is set in — over cream, with antique gold on rules and details. Gold reads as money without shouting.</p>
+          <div class="pal"><div style="background:#F4F1E9;color:#17150F;"><span>F4F1E9</span></div><div style="background:#17150F;color:#F4F1E9;"><span>17150F</span></div><div style="background:#B08D45;color:#17150F;"><span>B08D45</span></div></div></div>
+        <div><h4>Pick this if</h4><p>He wants the highest price point and is selling occasion wear — weddings, galas, black tie, entertainment and sports clients.</p></div>
+      </div>
+      <div class="includes">
+        <div><strong>The mark</strong><span>The Notch, plus stacked and horizontal lockups and a one-colour knockout for labels.</span></div>
+        <div><strong>The site</strong><span>Homepage, the cut &amp; cloth selector, and an appointment request flow.</span></div>
+        <div><strong>The system</strong><span>Bodoni Moda + Jost, the three-value palette, and card and label artwork.</span></div>
+      </div>
+    </article>
+
+    <!-- ===== II. SAVILE ===== -->
+    <article class="pack">
+      <div class="pack-head">
+        <span class="concept-letter">Package II</span>
+        <h3 class="display">Savile</h3>
+        <span class="world-ref">Mark: The Roman &middot; After Huntsman</span>
+      </div>
+      <p class="pack-line">
+        Roman numerals and an old-style serif on warm bone, with oxblood for accents. The package
+        that looks as though the house has been trading for forty years.
+      </p>
+
+      <p class="pack-sub">The mark &mdash; The Roman</p>
+      <div class="concept-grid">
+        <div class="plate" style="background:#EDE7DA;color:#1C1A17;">
+          <svg viewBox="0 0 320 180" role="img" aria-label="The Roman: XXI set between two rules">
+            <line x1="52" y1="44" x2="268" y2="44" stroke="currentColor" stroke-width="2"/>
+            <text x="156" y="120" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="76" font-weight="500" letter-spacing="8">XXI</text>
+            <line x1="52" y1="142" x2="268" y2="142" stroke="#6E2733" stroke-width="2.4"/></svg>
+        </div>
+        <div class="concept-side">
+          <div class="plate plate-ink">
+            <svg viewBox="0 0 300 236" role="img" aria-label="The Roman reversed on black with the full name">
+              <line x1="66" y1="34" x2="234" y2="34" stroke="currentColor" stroke-width="1"/>
+              <text x="144" y="104" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="66" font-weight="500" letter-spacing="7">XXI</text>
+              <line x1="66" y1="126" x2="234" y2="126" stroke="#A8505E" stroke-width="1.3"/>
+              <text x="150" y="170" text-anchor="middle" fill="currentColor" font-family="Cormorant Garamond, Garamond, serif" font-size="26" letter-spacing="1.5">Twenty One</text>
+              <text x="150" y="198" text-anchor="middle" fill="currentColor" font-family="Cormorant Garamond, Garamond, serif" font-size="26" letter-spacing="1.5">Custom Cloth</text></svg>
+          </div>
+          <div class="sizes">
+            <figure><svg width="88" height="50" viewBox="0 0 320 180" aria-hidden="true">
+              <line x1="52" y1="44" x2="268" y2="44" stroke="currentColor" stroke-width="3"/>
+              <text x="156" y="120" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="76" font-weight="500" letter-spacing="8">XXI</text>
+              <line x1="52" y1="142" x2="268" y2="142" stroke="currentColor" stroke-width="3"/></svg><figcaption>88 px</figcaption></figure>
+            <figure><svg width="44" height="25" viewBox="0 0 320 180" aria-hidden="true">
+              <line x1="52" y1="44" x2="268" y2="44" stroke="currentColor" stroke-width="5"/>
+              <text x="156" y="120" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="76" font-weight="500" letter-spacing="8">XXI</text>
+              <line x1="52" y1="142" x2="268" y2="142" stroke="currentColor" stroke-width="5"/></svg><figcaption>44 px</figcaption></figure>
+            <figure><svg width="22" height="13" viewBox="0 0 320 180" aria-hidden="true">
+              <line x1="52" y1="44" x2="268" y2="44" stroke="currentColor" stroke-width="9"/>
+              <text x="156" y="120" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="76" font-weight="500" letter-spacing="8">XXI</text>
+              <line x1="52" y1="142" x2="268" y2="142" stroke="currentColor" stroke-width="9"/></svg><figcaption>22 px</figcaption></figure>
+          </div>
+        </div>
+      </div>
+      <div class="concept-notes">
+        <div><h4>The idea</h4><p>Twenty-one written the way a watch dial or a cornerstone writes it. <em>XXI</em> is near-symmetrical, so it sits square between two rules with no optical correction.</p></div>
+        <div><h4>What it fixes</h4><p>Written as <em>21</em>, the number reads like a street address or a jersey. Written as XXI it reads like a house that has been there a while.</p></div>
+        <div><h4>The trade-off</h4><p>The least surprising mark on the page. It will never be mistaken for anyone else's, but it will not stop anyone in the street either.</p></div>
+      </div>
+
+
+      <p class="pack-sub">The mark, made physical</p>
+      <div class="materials">
+        <div class="mat mat-foil"><div class="mat-inner"><svg viewBox="0 0 320 180" role="img" aria-label="The Roman mark">
+            <line x1="52" y1="44" x2="268" y2="44" stroke="url(#foil)" stroke-width="3.4"/>
+            <text x="156" y="122" text-anchor="middle" fill="url(#foil)" font-family="Bodoni Moda, Didot, serif" font-size="78" font-weight="500" letter-spacing="8">XXI</text>
+            <line x1="52" y1="144" x2="268" y2="144" stroke="url(#foil)" stroke-width="3.4"/></svg></div><cite>Gold foil on ink</cite></div>
+        <div class="mat mat-deboss"><div class="mat-inner"><svg viewBox="0 0 320 180" role="img" aria-label="The Roman mark">
+            <line x1="52" y1="44" x2="268" y2="44" stroke="#C2B79C" stroke-width="3.4"/>
+            <text x="156" y="122" text-anchor="middle" fill="#C2B79C" font-family="Bodoni Moda, Didot, serif" font-size="78" font-weight="500" letter-spacing="8">XXI</text>
+            <line x1="52" y1="144" x2="268" y2="144" stroke="#C2B79C" stroke-width="3.4"/></svg></div><cite>Blind deboss, cream stock</cite></div>
+        <div class="mat mat-cloth"><div class="mat-inner" style="background-image:url({{IMG:cl_birdseye}})"><svg viewBox="0 0 320 180" role="img" aria-label="The Roman mark">
+            <line x1="52" y1="44" x2="268" y2="44" stroke="#F6F4EE" stroke-width="3.4"/>
+            <text x="156" y="122" text-anchor="middle" fill="#F6F4EE" font-family="Bodoni Moda, Didot, serif" font-size="78" font-weight="500" letter-spacing="8">XXI</text>
+            <line x1="52" y1="144" x2="268" y2="144" stroke="#F6F4EE" stroke-width="3.4"/></svg></div><cite>Woven label</cite></div>
+        <div class="mat mat-metal"><div class="mat-inner"><svg viewBox="0 0 320 180" role="img" aria-label="The Roman mark">
+            <line x1="52" y1="44" x2="268" y2="44" stroke="#33312D" stroke-width="3.4"/>
+            <text x="156" y="122" text-anchor="middle" fill="#33312D" font-family="Bodoni Moda, Didot, serif" font-size="78" font-weight="500" letter-spacing="8">XXI</text>
+            <line x1="52" y1="144" x2="268" y2="144" stroke="#33312D" stroke-width="3.4"/></svg></div><cite>Engraved button</cite></div>
+      </div>
+      <p class="pack-sub">The website</p>
+      <div class="mock">
+        <div class="mock-bar"><i></i><i></i><i></i><span>twentyonecustomcloth.com</span></div>
+        <div class="w-savile">
+          <div class="mk">
+            <nav class="mk-nav">
+              <span class="nav-logo"><svg viewBox="0 0 340 62" role="img" aria-label="Twenty One Custom Cloth">
+                <line x1="4" y1="14" x2="80" y2="14" stroke="currentColor" stroke-width="1"/>
+                <text x="42" y="46" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="27" letter-spacing="4">XXI</text>
+                <line x1="4" y1="55" x2="80" y2="55" stroke="#6E2733" stroke-width="1.2"/>
+                <text x="98" y="42" fill="currentColor" font-family="Cormorant Garamond, Garamond, serif" font-size="27" letter-spacing="1.2">Twenty One Custom Cloth</text></svg></span>
+              <a href="#ii">Bespoke</a><a href="#ii">Cloth Library</a><a href="#ii">Visit</a>
+            </nav>
+            <div class="mk-hero">
+              <div class="mk-copy">
+                <h5 id="ii">Measured once.<br><i>Remembered for good.</i></h5>
+                <p class="sub">Your pattern is cut for you and kept on file. Every suit that follows begins where the last one finished.</p>
+                <span class="cta">Request an appointment</span>
+              </div>
+              <div class="mk-shot"><img src="{{IMG:owner_button}}" alt="The founder of Twenty One Custom Cloth buttoning his jacket"></div>
+            </div>
+          </div>
+          <div class="mk-strip"><div>Est. 2021</div><div>Cloth Library</div><div>Trunk Shows</div><div>Alterations</div></div>
+        </div>
+      </div>
+      <div class="world-meta">
+        <div><h4>The feeling</h4><p>Daylight through a shop window. Paper, wood, chalk and shears. Warmer and softer than Ivory — the register English tailors have used for two hundred years.</p></div>
+        <div><h4>Type &amp; colour</h4><p>Cormorant Garamond on warm bone, with oxblood — the colour of a leather-bound ledger — for accents. The only package that feels handmade rather than art-directed.</p>
+          <div class="pal"><div style="background:#EDE7DA;color:#1C1A17;"><span>EDE7DA</span></div><div style="background:#1C1A17;color:#EDE7DA;"><span>1C1A17</span></div><div style="background:#6E2733;color:#EDE7DA;"><span>6E2733</span></div></div></div>
+        <div><h4>Pick this if</h4><p>He is selling trust and repeat business to professionals — the client who buys three suits a year for twenty years, which is what the business plan is built on.</p></div>
+      </div>
+      <div class="includes">
+        <div><strong>The mark</strong><span>The Roman, plus stacked and horizontal lockups and a one-colour knockout for labels.</span></div>
+        <div><strong>The site</strong><span>Homepage, a browsable cloth library, and an appointment request flow.</span></div>
+        <div><strong>The system</strong><span>Cormorant Garamond + Jost, the bone and oxblood palette, and card and label artwork.</span></div>
+      </div>
+    </article>
+
+    <!-- ===== III. CHROME ===== -->
+    <article class="pack">
+      <div class="pack-head">
+        <span class="concept-letter">Package III</span>
+        <h3 class="display">Chrome</h3>
+        <span class="world-ref">Mark: The Label &middot; After Zegna</span>
+      </div>
+      <p class="pack-line">
+        No icon at all — the name alone, on pure white with true black and no accent colour anywhere.
+        The most modern of the three and the cheapest to keep looking sharp.
+      </p>
+
+      <p class="pack-sub">The mark &mdash; The Label</p>
+      <div class="concept-grid">
+        <div class="plate" style="background:#FFFFFF;color:#000000;">
+          <svg viewBox="0 0 480 200" role="img" aria-label="The Label: Twenty One above Custom Cloth">
+            <text x="237" y="76" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="58" font-weight="500" letter-spacing="6">TWENTY ONE</text>
+            <line x1="132" y1="108" x2="348" y2="108" stroke="currentColor" stroke-width="2.2"/>
+            <text x="235" y="144" text-anchor="middle" fill="currentColor" font-family="Jost, Futura, sans-serif" font-size="18" letter-spacing="9">CUSTOM CLOTH</text>
+            <text x="236" y="176" text-anchor="middle" fill="currentColor" font-family="Jost, Futura, sans-serif" font-size="11" letter-spacing="8" opacity=".5">EST. 2021</text></svg>
+        </div>
+        <div class="concept-side">
+          <div class="plate plate-ink">
+            <svg viewBox="0 0 360 156" role="img" aria-label="The Label reversed on black">
+              <text x="177" y="64" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="42" letter-spacing="5">TWENTY ONE</text>
+              <line x1="92" y1="88" x2="268" y2="88" stroke="currentColor" stroke-width="1.1"/>
+              <text x="176" y="118" text-anchor="middle" fill="currentColor" font-family="Jost, Futura, sans-serif" font-size="14" letter-spacing="8">CUSTOM CLOTH</text></svg>
+          </div>
+          <div class="sizes">
+            <figure><svg width="176" height="73" viewBox="0 0 480 200" aria-hidden="true">
+              <text x="237" y="76" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="58" font-weight="500" letter-spacing="6">TWENTY ONE</text>
+              <line x1="132" y1="108" x2="348" y2="108" stroke="currentColor" stroke-width="2.6"/>
+              <text x="235" y="144" text-anchor="middle" fill="currentColor" font-family="Jost, Futura, sans-serif" font-size="18" letter-spacing="9">CUSTOM CLOTH</text></svg><figcaption>176 px</figcaption></figure>
+            <figure><svg width="104" height="43" viewBox="0 0 480 200" aria-hidden="true">
+              <text x="237" y="76" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="58" font-weight="500" letter-spacing="6">TWENTY ONE</text>
+              <line x1="132" y1="108" x2="348" y2="108" stroke="currentColor" stroke-width="4.4"/>
+              <text x="235" y="144" text-anchor="middle" fill="currentColor" font-family="Jost, Futura, sans-serif" font-size="18" letter-spacing="9">CUSTOM CLOTH</text></svg><figcaption>104 px</figcaption></figure>
+            <figure><svg width="66" height="28" viewBox="0 0 480 200" aria-hidden="true">
+              <text x="237" y="76" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, serif" font-size="58" font-weight="500" letter-spacing="6">TWENTY ONE</text>
+              <line x1="132" y1="108" x2="348" y2="108" stroke="currentColor" stroke-width="6.5"/>
+              <text x="235" y="144" text-anchor="middle" fill="currentColor" font-family="Jost, Futura, sans-serif" font-size="18" letter-spacing="9">CUSTOM CLOTH</text></svg><figcaption>66 px</figcaption></figure>
+          </div>
+        </div>
+      </div>
+      <div class="concept-notes">
+        <div><h4>The idea</h4><p>No mark at all. The name in a true Didone, one hairline rule doing the only decorating. A garment label enlarged and promoted to become the whole identity.</p></div>
+        <div><h4>Why it works</h4><p>The most expensive-looking and the cheapest to produce. Céline, Saint Laurent and Balenciaga all threw away their marks and kept only the name.</p></div>
+        <div><h4>The trade-off</h4><p>No small-format fallback — no icon for a profile picture, an app tile or a lapel pin. The initials <em>21</em> stand in wherever the full name will not fit.</p></div>
+      </div>
+
+
+      <p class="pack-sub">The mark, made physical</p>
+      <div class="materials">
+        <div class="mat mat-foil"><div class="mat-inner"><svg viewBox="0 0 480 170" role="img" aria-label="The Label wordmark">
+            <text x="237" y="74" text-anchor="middle" fill="url(#foil)" font-family="Bodoni Moda, Didot, serif" font-size="58" font-weight="500" letter-spacing="6">TWENTY ONE</text>
+            <line x1="132" y1="104" x2="348" y2="104" stroke="url(#foil)" stroke-width="3"/>
+            <text x="235" y="140" text-anchor="middle" fill="url(#foil)" font-family="Jost, Futura, sans-serif" font-size="18" letter-spacing="9">CUSTOM CLOTH</text></svg></div><cite>Gold foil on ink</cite></div>
+        <div class="mat mat-deboss"><div class="mat-inner"><svg viewBox="0 0 480 170" role="img" aria-label="The Label wordmark">
+            <text x="237" y="74" text-anchor="middle" fill="#C2B79C" font-family="Bodoni Moda, Didot, serif" font-size="58" font-weight="500" letter-spacing="6">TWENTY ONE</text>
+            <line x1="132" y1="104" x2="348" y2="104" stroke="#C2B79C" stroke-width="3"/>
+            <text x="235" y="140" text-anchor="middle" fill="#C2B79C" font-family="Jost, Futura, sans-serif" font-size="18" letter-spacing="9">CUSTOM CLOTH</text></svg></div><cite>Blind deboss, cream stock</cite></div>
+        <div class="mat mat-cloth"><div class="mat-inner" style="background-image:url({{IMG:cl_pinstripe}})"><svg viewBox="0 0 480 170" role="img" aria-label="The Label wordmark">
+            <text x="237" y="74" text-anchor="middle" fill="#F6F4EE" font-family="Bodoni Moda, Didot, serif" font-size="58" font-weight="500" letter-spacing="6">TWENTY ONE</text>
+            <line x1="132" y1="104" x2="348" y2="104" stroke="#F6F4EE" stroke-width="3"/>
+            <text x="235" y="140" text-anchor="middle" fill="#F6F4EE" font-family="Jost, Futura, sans-serif" font-size="18" letter-spacing="9">CUSTOM CLOTH</text></svg></div><cite>Woven label</cite></div>
+        <div class="mat mat-metal"><div class="mat-inner"><svg viewBox="0 0 480 170" role="img" aria-label="The Label wordmark">
+            <text x="237" y="74" text-anchor="middle" fill="#33312D" font-family="Bodoni Moda, Didot, serif" font-size="58" font-weight="500" letter-spacing="6">TWENTY ONE</text>
+            <line x1="132" y1="104" x2="348" y2="104" stroke="#33312D" stroke-width="3"/>
+            <text x="235" y="140" text-anchor="middle" fill="#33312D" font-family="Jost, Futura, sans-serif" font-size="18" letter-spacing="9">CUSTOM CLOTH</text></svg></div><cite>Engraved button</cite></div>
+      </div>
+      <p class="pack-sub">The website</p>
+      <div class="mock">
+        <div class="mock-bar"><i></i><i></i><i></i><span>twentyonecustomcloth.com</span></div>
+        <div class="w-chrome">
+          <div class="mk">
+            <nav class="mk-nav">
+              <span class="nav-logo"><svg viewBox="0 0 260 62" role="img" aria-label="Twenty One Custom Cloth">
+                <text x="2" y="30" fill="currentColor" font-family="Jost, Futura, sans-serif" font-weight="500" font-size="18" letter-spacing="6.5">TWENTY ONE</text>
+                <line x1="2" y1="41" x2="198" y2="41" stroke="currentColor" stroke-width="1.4"/>
+                <text x="2" y="56" fill="currentColor" font-family="Jost, Futura, sans-serif" font-weight="300" font-size="10" letter-spacing="5.4">CUSTOM CLOTH</text></svg></span>
+              <a href="#iii">Suits</a><a href="#iii">Shirting</a><a href="#iii">Book</a>
+            </nav>
+            <div class="mk-hero">
+              <div class="mk-copy">
+                <h5 id="iii">Three suits.<br>Three shirts.<br><i>One fitting.</i></h5>
+                <p class="sub">A complete wardrobe, cut to your measurements and delivered in weeks. No showroom. No pressure.</p>
+                <span class="cta">Start</span>
+              </div>
+              <div class="mk-shot"><img src="{{IMG:314201240}}" alt="Studio portrait of a man in a tailored blazer"></div>
+            </div>
+          </div>
+          <div class="mk-strip"><div>01 Consult</div><div>02 Measure</div><div>03 Fit</div><div>04 Deliver</div></div>
+        </div>
+      </div>
+      <div class="world-meta">
+        <div><h4>The feeling</h4><p>A gallery, not a shop. Pure white, true black, nothing warm and nothing decorative. The most modern of the three and the easiest to keep looking sharp over time.</p></div>
+        <div><h4>Type &amp; colour</h4><p>Jost set very light and very large, uppercase. There is no accent colour at all — the contrast <em>is</em> the accent. Hardest of the three to get wrong.</p>
+          <div class="pal"><div style="background:#FFFFFF;color:#000;"><span>FFFFFF</span></div><div style="background:#000000;color:#fff;"><span>000000</span></div><div style="background:#B8B8B8;color:#000;"><span>B8B8B8</span></div></div></div>
+        <div><h4>Pick this if</h4><p>He wants to look like a modern Italian label and sell to a younger buyer — first suit, first real job, groomsmen. Cheapest to photograph for, too.</p></div>
+      </div>
+      <div class="includes">
+        <div><strong>The mark</strong><span>The Label wordmark, plus a <em>21</em> monogram for avatars and app tiles.</span></div>
+        <div><strong>The site</strong><span>Homepage, a four-step ordering flow, and an appointment request.</span></div>
+        <div><strong>The system</strong><span>Jost throughout, pure black and white, and card and label artwork.</span></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== DECISION ===================== -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">Part Four</span>
+      <h2 class="display">What I'd choose</h2>
+      <p class="body-copy">
+        <em>Package I, Ivory.</em> The notch gives him a mark that is genuinely his own and cannot
+        turn up on a competitor's window; the ivory ground keeps the whole site readable on a phone
+        in daylight, which is where most clients will first see it. The other two are real options,
+        not filler — here is when each wins.
+      </p>
+    </div>
+    <div class="decide">
+      <div class="featured"><span class="pick">The recommendation</span><h4>I &middot; Ivory</h4>
+        <p>Ownable mark, highest perceived price, strongest on a phone. This is the package I would build.</p></div>
+      <div><span class="pick">The safe build</span><h4>II &middot; Savile</h4>
+        <p>Choose this if the client is nervous about looking new, or is selling mainly to older professional buyers who want a house that already looks established.</p></div>
+      <div><span class="pick">The modern build</span><h4>III &middot; Chrome</h4>
+        <p>Choose this if the buyer skews young — first suit, first real job, groomsmen. Cheapest to run and photograph, but it gives up a proper icon.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Twenty One Custom Cloth &middot; Est. 2021</p>
+    <p>Three Brand &amp; Website Packages</p>
+  </footer>
+  <p class="credit">
+    The two photographs of the owner are his own, converted to black and white and tonally
+    matched to the rest of the page. Everything else is licensed Adobe Stock, also converted to
+    black and white so the whole page reads as one brand. The stock stands in for the real thing:
+    before launch it should be replaced with photographs of his own suits, his own clients and his
+    own fittings, which is the single biggest upgrade available to any of these three packages.
+  </p>
+
+</div>
