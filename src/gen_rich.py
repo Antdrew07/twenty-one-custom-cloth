@@ -113,12 +113,13 @@ def arms():
     out.append(f'<path d="{shield(sx, sy, sw, sh)}" fill="none" stroke="currentColor" stroke-width="3"/>')
     out.append(f'<path d="{shield(sx+8, sy+8, sw-16, sh-18)}" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".55"/>')
     out.append(f'<text x="{cx}" y="{sy+92}" text-anchor="middle" font-family="{BODONI}" font-size="58" font-weight="500" letter-spacing="5" fill="currentColor">XXI</text>')
-    out.append(f'<line x1="{cx-30}" y1="{sy+112}" x2="{cx+30}" y2="{sy+112}" stroke="currentColor" stroke-width="1.6"/>')
+    out.append(f'<line x1="{cx-26}" y1="{sy+106}" x2="{cx+26}" y2="{sy+106}" stroke="currentColor" stroke-width="1.2" opacity=".7"/>')
+    out.append(f'<text x="{cx}" y="{sy+122}" text-anchor="middle" font-family="{JOST}" font-size="8.6" letter-spacing="3.2" fill="currentColor" opacity=".88">AD MENSURAM</text>')
     # laurels — left branch sweeps up the left side, right mirrors it
     out.append(laurel_branch(cx, sy + 86, 118, 118, 202, 9, 20, 8.5))
     out.append(laurel_branch(cx, sy + 86, 118, 62, -22, 9, 20, 8.5, flip=True))
-    out.append(ribbon(cx, 322, 212, 34, "AD MENSURAM", 13, 5))
-    out.append(f'<text x="{cx}" y="392" text-anchor="middle" font-family="{JOST}" font-size="11.5" letter-spacing="6" fill="currentColor" opacity=".8">EST. MMXXI</text>')
+    out.append(ribbon(cx, 322, 222, 34, "CUSTOM CLOTH", 13, 5))
+    out.append(f'<text x="{cx}" y="392" text-anchor="middle" font-family="{JOST}" font-size="11.5" letter-spacing="6" fill="currentColor" opacity=".85">EST. 2026</text>')
     out.append('</svg>')
     return "".join(out)
 
@@ -131,7 +132,7 @@ def seal():
     out.append(f'<circle cx="{cx}" cy="{cy}" r="146" fill="none" stroke="currentColor" stroke-width="1.4"/>')
     for sx in (-1, 1):
         out.append(f'<circle cx="{cx + sx*126}" cy="{cy}" r="3.2" fill="currentColor"/>')
-    out.append(ring_text(cx, cy, 126, "TWENTY ONE  ·  CUSTOM CLOTH", "EST.  MMXXI", 15, 6.4, "sealring"))
+    out.append(ring_text(cx, cy, 126, "TWENTY ONE  ·  CUSTOM CLOTH", "EST.  2026", 15, 6.4, "sealring"))
     out.append(f'<circle cx="{cx}" cy="{cy}" r="106" fill="none" stroke="currentColor" stroke-width="1.4"/>')
     out.append(laurel_branch(cx, cy, 86, 112, 250, 10, 19, 8))
     out.append(laurel_branch(cx, cy, 86, 68, -70, 10, 19, 8, flip=True))
