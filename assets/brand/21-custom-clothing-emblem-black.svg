@@ -2,33 +2,41 @@
   <title id="title">Twenty One Custom Clothing crowned shield emblem</title>
   <desc id="desc">Crowned Twenty One shield emblem.</desc>
   <g color="#000000">
-  <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
-    <!-- Ornamental crown reconstructed from the approved garment-bag reference -->
-    <path d="M472 286 Q600 252 728 286 L718 317 Q600 287 482 317 Z" stroke-width="13"/>
-    <path d="M485 270 C478 233 490 195 521 170 C530 196 543 211 561 221 C552 190 560 158 584 137 C591 160 598 177 600 194 C602 177 609 160 616 137 C640 158 648 190 639 221 C657 211 670 196 679 170 C710 195 722 233 715 270" stroke-width="16"/>
-    <!-- Fleur-de-lis terminals -->
-    <path d="M521 170 C500 153 501 128 523 118 C526 136 536 145 550 148 C540 160 533 167 521 170 Z" fill="currentColor" stroke="none"/>
-    <path d="M584 137 C562 121 564 96 586 84 C590 104 600 112 600 125 C600 112 610 104 614 84 C636 96 638 121 616 137 C609 144 604 150 600 158 C596 150 591 144 584 137 Z" fill="currentColor" stroke="none"/>
-    <path d="M679 170 C667 167 660 160 650 148 C664 145 674 136 677 118 C699 128 700 153 679 170 Z" fill="currentColor" stroke="none"/>
-    <!-- Jewel line and crown band -->
-    <circle cx="508" cy="283" r="6" fill="currentColor" stroke="none"/>
-    <circle cx="554" cy="277" r="6" fill="currentColor" stroke="none"/>
-    <circle cx="600" cy="270" r="6" fill="currentColor" stroke="none"/>
-    <circle cx="646" cy="277" r="6" fill="currentColor" stroke="none"/>
-    <circle cx="692" cy="283" r="6" fill="currentColor" stroke="none"/>
-    <path d="M490 308 Q600 280 710 308" stroke-width="8"/>
+
+  <!-- Classical crown: a clear crown band, five jeweled points, and a royal center -->
+  <g fill="currentColor" stroke="none">
+    <path d="M442 318 L457 264 L476 178 L530 234 L562 118 L600 201 L638 118 L670 234 L724 178 L743 264 L758 318 Z"/>
+    <path d="M449 304 Q600 270 751 304 L738 348 Q600 316 462 348 Z"/>
+    <path d="M467 337 Q600 309 733 337 L720 363 Q600 336 480 363 Z"/>
+    <!-- Rounded jewels make the points unmistakably crown-like at small sizes -->
+    <circle cx="476" cy="178" r="15"/>
+    <circle cx="530" cy="234" r="13"/>
+    <circle cx="562" cy="118" r="16"/>
+    <circle cx="600" cy="201" r="14"/>
+    <circle cx="638" cy="118" r="16"/>
+    <circle cx="670" cy="234" r="13"/>
+    <circle cx="724" cy="178" r="15"/>
+  </g>
+  <!-- Crown highlights and jewel line -->
+  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M474 286 Q600 250 726 286" stroke-width="12"/>
+    <circle cx="507" cy="326" r="7" fill="currentColor" stroke="none"/>
+    <circle cx="553" cy="319" r="7" fill="currentColor" stroke="none"/>
+    <circle cx="600" cy="313" r="7" fill="currentColor" stroke="none"/>
+    <circle cx="647" cy="319" r="7" fill="currentColor" stroke="none"/>
+    <circle cx="693" cy="326" r="7" fill="currentColor" stroke="none"/>
     <!-- Outer shield -->
-    <path d="M365 311 Q485 283 600 314 Q715 283 835 311 V558 Q835 745 600 887 Q365 745 365 558 Z" stroke-width="24"/>
+    <path d="M365 346 Q485 318 600 349 Q715 318 835 346 V569 Q835 748 600 891 Q365 748 365 569 Z" stroke-width="24"/>
     <!-- Inner shield -->
-    <path d="M400 341 Q500 317 600 345 Q700 317 800 341 V549 Q800 705 600 829 Q400 705 400 549 Z" stroke-width="11"/>
+    <path d="M400 375 Q500 351 600 379 Q700 351 800 375 V559 Q800 708 600 832 Q400 708 400 559 Z" stroke-width="11"/>
   </g>
   <!-- Numeral -->
-  <text x="600" y="602" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, Times New Roman, serif" font-size="322" font-weight="500" letter-spacing="-26">21</text>
+  <text x="600" y="616" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, Times New Roman, serif" font-size="318" font-weight="500" letter-spacing="-26">21</text>
   <!-- Divider and small fleur ornament -->
   <g fill="none" stroke="currentColor" stroke-linecap="round">
-    <path d="M444 685 H548 M652 685 H756" stroke-width="9"/>
-    <path d="M600 660 v48 M578 685 h44" stroke-width="7"/>
-    <path d="M600 665 C586 653 570 664 578 680 C584 692 600 704 600 704 C600 704 616 692 622 680 C630 664 614 653 600 665Z" fill="currentColor" stroke="none"/>
+    <path d="M444 691 H548 M652 691 H756" stroke-width="9"/>
+    <path d="M600 666 v48 M578 691 h44" stroke-width="7"/>
+    <path d="M600 671 C586 659 570 670 578 686 C584 698 600 710 600 710 C600 710 616 698 622 686 C630 670 614 659 600 671Z" fill="currentColor" stroke="none"/>
   </g>
 
   </g>

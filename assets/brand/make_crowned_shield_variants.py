@@ -10,10 +10,12 @@ white = source.replace('currentColor', '#FFFFFF')
 (root / '21-custom-clothing-crowned-shield-white.svg').write_text(white)
 
 emblem_template = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="260 55 680 850" role="img" aria-labelledby="title desc">\n  <title id="title">Twenty One Custom Clothing crowned shield emblem</title>\n  <desc id="desc">Crowned Twenty One shield emblem.</desc>\n  <g color="{color}">\n{art}\n  </g>\n</svg>\n'''
-# Keep all shield and crown paths, but omit the wordmark and its divider lines.
-start = source.index('  <g fill="none" stroke="currentColor" stroke-linejoin="round"')
+# Keep all crown, shield, numeral, and divider artwork, but omit the wordmark.
+# This derives the social emblem from the master mark without assuming a specific
+# implementation of the crown's SVG groups.
+start = source.index('</desc>') + len('</desc>')
 end = source.index('  <!-- Wordmark -->')
-art = source[start:end].replace('currentColor', 'currentColor')
+art = source[start:end]
 for color, filename in (('#000000', '21-custom-clothing-emblem-black.svg'), ('#FFFFFF', '21-custom-clothing-emblem-white.svg')):
     (root / filename).write_text(emblem_template.format(color=color, art=art))
 
