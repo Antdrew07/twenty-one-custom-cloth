@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="260 55 680 850" role="img" aria-labelledby="title desc">
+  <title id="title">Twenty One Custom Clothing crowned shield emblem</title>
+  <desc id="desc">Crowned Twenty One shield emblem.</desc>
+  <g color="#000000">
+  <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Crown -->
+    <path d="M390 188 L432 130 L474 177 L510 91 L550 176 L600 116 L650 176 L690 91 L726 177 L768 130 L810 188 L790 237 H410 Z" stroke-width="22"/>
+    <path d="M414 217 H786" stroke-width="16"/>
+    <circle cx="432" cy="130" r="10" fill="currentColor" stroke="none"/>
+    <circle cx="510" cy="91" r="10" fill="currentColor" stroke="none"/>
+    <circle cx="600" cy="116" r="10" fill="currentColor" stroke="none"/>
+    <circle cx="690" cy="91" r="10" fill="currentColor" stroke="none"/>
+    <circle cx="768" cy="130" r="10" fill="currentColor" stroke="none"/>
+    <!-- Outer shield -->
+    <path d="M336 248 Q468 218 600 248 Q732 218 864 248 V536 Q864 748 600 890 Q336 748 336 536 Z" stroke-width="26"/>
+    <!-- Inner shield -->
+    <path d="M375 281 Q487 257 600 283 Q713 257 825 281 V523 Q825 703 600 824 Q375 703 375 523 Z" stroke-width="12"/>
+  </g>
+  <!-- Numeral -->
+  <text x="600" y="586" text-anchor="middle" fill="currentColor" font-family="Bodoni Moda, Didot, Times New Roman, serif" font-size="328" font-weight="500" letter-spacing="-26">21</text>
+  <!-- Dividers and ornament -->
+  <g fill="none" stroke="currentColor" stroke-linecap="round">
+    <path d="M424 676 H540 M660 676 H776" stroke-width="10"/>
+    <path d="M600 650 v52 M577 676 h46" stroke-width="8"/>
+    <path d="M600 657 C585 645 567 657 576 675 C582 688 600 700 600 700 C600 700 618 688 624 675 C633 657 615 645 600 657Z" fill="currentColor" stroke="none"/>
+  </g>
+
+  </g>
+</svg>
