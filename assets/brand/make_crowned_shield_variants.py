@@ -1,11 +1,22 @@
 from pathlib import Path
+import base64
 
 root = Path(__file__).resolve().parent
 master = root / '21-custom-clothing-crowned-shield.svg'
 source = master.read_text()
 
+crown_source = (root / 'professional-heraldic-crown.svg').read_text()
+crown_black_uri = 'data:image/svg+xml;base64,' + base64.b64encode(crown_source.encode()).decode()
+crown_white_source = crown_source.replace(
+    'style="display: block;"',
+    'style="display: block; filter: invert(1);"',
+    1,
+)
+(root / 'professional-heraldic-crown-white.svg').write_text(crown_white_source)
+crown_white_uri = 'data:image/svg+xml;base64,' + base64.b64encode(crown_white_source.encode()).decode()
+
 black = source.replace('currentColor', '#000000')
-white = source.replace('currentColor', '#FFFFFF')
+white = source.replace('currentColor', '#FFFFFF').replace(crown_black_uri, crown_white_uri)
 (root / '21-custom-clothing-crowned-shield-black.svg').write_text(black)
 (root / '21-custom-clothing-crowned-shield-white.svg').write_text(white)
 
@@ -14,10 +25,13 @@ emblem_template = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="260 55 680
 # This derives the social emblem from the master mark without assuming a specific
 # implementation of the crown's SVG groups.
 start = source.index('</desc>') + len('</desc>')
-end = source.index('  <!-- Wordmark -->')
+end = source.index('  <text x="600" y="1008"')
 art = source[start:end]
 for color, filename in (('#000000', '21-custom-clothing-emblem-black.svg'), ('#FFFFFF', '21-custom-clothing-emblem-white.svg')):
-    (root / filename).write_text(emblem_template.format(color=color, art=art))
+    emblem = emblem_template.format(color=color, art=art)
+    if color == '#FFFFFF':
+        emblem = emblem.replace(crown_black_uri, crown_white_uri)
+    (root / filename).write_text(emblem)
 
 review = '''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Twenty One Custom Clothing — Crowned Shield Review</title><style>
