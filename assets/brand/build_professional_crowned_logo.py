@@ -2,14 +2,14 @@ from pathlib import Path
 import base64
 
 root = Path(__file__).resolve().parent
-crown_bytes = (root / 'professional-heraldic-crown.svg').read_bytes()
+crown_bytes = (root / 'professional-kings-crown.svg').read_bytes()
 crown_uri = 'data:image/svg+xml;base64,' + base64.b64encode(crown_bytes).decode()
 
 master = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
   <title id="title">Twenty One Custom Clothing crowned shield logo</title>
-  <desc id="desc">A black and white heraldic crown and shield featuring the number 21, Custom Clothing wordmark, and Established 2021 line.</desc>
-  <!-- Exact professional heraldic crown generated in vector format -->
-  <image href="{crown_uri}" x="327" y="90" width="546" height="273" preserveAspectRatio="xMidYMid meet"/>
+  <desc id="desc">A black and white king's crown and shield featuring the number 21, Custom Clothing wordmark, and Established 2021 line.</desc>
+  <!-- Exact professional king's crown generated in vector format -->
+  <image href="{crown_uri}" x="295" y="72" width="610" height="305" preserveAspectRatio="xMidYMid meet"/>
   <!-- Shield -->
   <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
     <path d="M365 346 Q485 318 600 349 Q715 318 835 346 V569 Q835 748 600 891 Q365 748 365 569 Z" stroke-width="24"/>

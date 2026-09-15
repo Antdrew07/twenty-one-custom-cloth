@@ -5,14 +5,14 @@ root = Path(__file__).resolve().parent
 master = root / '21-custom-clothing-crowned-shield.svg'
 source = master.read_text()
 
-crown_source = (root / 'professional-heraldic-crown.svg').read_text()
+crown_source = (root / 'professional-kings-crown.svg').read_text()
 crown_black_uri = 'data:image/svg+xml;base64,' + base64.b64encode(crown_source.encode()).decode()
 crown_white_source = crown_source.replace(
     'style="display: block;"',
     'style="display: block; filter: invert(1);"',
     1,
 )
-(root / 'professional-heraldic-crown-white.svg').write_text(crown_white_source)
+(root / 'professional-kings-crown-white.svg').write_text(crown_white_source)
 crown_white_uri = 'data:image/svg+xml;base64,' + base64.b64encode(crown_white_source.encode()).decode()
 
 black = source.replace('currentColor', '#000000')
