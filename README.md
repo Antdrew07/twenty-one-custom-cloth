@@ -1,28 +1,36 @@
-# Twenty One Custom Cloth — Six Brand and Website Directions
+# Twenty One Custom Cloth — Black-and-White Vintage Website
 
-This repository contains a client-facing concept selector for a luxury **men’s custom suiting company**. The site places all six identity systems on one responsive page and lets the client move between each logo, palette, positioning statement, and website direction.
+This repository contains the approved website direction for **Twenty One Custom Cloth**, a private men’s custom-tailoring company.
 
-| Direction | Position | Website character |
-| --- | --- | --- |
-| **01. Sovereign** | Executive authority | Oxblood private-club warmth and formal portraiture |
-| **02. Atelier** | Personal craft | Forest-green atelier imagery and relationship-led service |
-| **03. Modernist** | Performance precision | Midnight-blue grids, digital fit profiles, and direct typography |
-| **04. The Arms** | Ceremonial luxury | Black, imperial gold, weddings, tuxedos, and milestone events |
-| **05. Greca Seal** | Monochrome fashion | The requested black-and-white private-uniform direction |
-| **06. Cartouche** | After-dark confidence | Charcoal, burnished copper, bone, and oxblood occasion tailoring |
+The earlier six-concept presentation has been replaced in the working redesign by a single customer-facing experience built around the owner-approved **Sovereign crown-and-shield mark**. The original burgundy and gold artwork has been converted into transparent black and reverse-white variants without changing the approved crest geometry.
 
-The supporting sections establish the product behind every direction: single-breasted suits, double-breasted suits, dinner jackets, three-piece suits, private consultations, cloth selection, fittings, and delivery.
+## Direction
 
-## Project structure
+The brand system uses deep black, warm white, grayscale photography, fine rules, restrained film grain, Bodoni display typography, traditional serif body copy, and compact monospaced labels. The intended result is masculine, vintage, private, and editorial rather than trendy or ornamental.
 
-`index.html` is the final self-contained presentation. `src/tpl.html` is the editable source. `src/build.py` rebuilds the presentation by embedding photography from `assets/web/` and SVG marks from `assets/brand/` as data URIs.
+## Website content
+
+The site includes the following sections:
+
+| Section | Purpose |
+| --- | --- |
+| Hero | Establishes the brand position and routes visitors to a private fitting |
+| Sovereign standard | Explains fit, cloth, detail, and continuity |
+| Wardrobe | Presents custom suits, black tie, shirts, and cloth |
+| Private process | Explains consultation, selection, measurement, fitting, and delivery |
+| Wardrobe No. 21 | Presents the three-suit and three-shirt foundation from the business plan |
+| The house | Introduces the personal-service philosophy |
+| Appointment request | Collects contact information, service interest, preferred date, and project notes |
+
+The appointment form’s delivery endpoint must be connected to the owner’s real business email or scheduling account before public launch. The interface and validation are already implemented.
+
+## Build
+
+`src/tpl.html` is the editable source. `src/build.py` embeds the photography and SVG marks into a self-contained `index.html`.
 
 ```bash
+python3 src/make_approved_sovereign_logos.py
 python3 src/build.py
 ```
 
-The final page has no runtime dependency on local image paths. Google Fonts are loaded at runtime; the interface falls back to system serif and sans-serif families if they are unavailable.
-
-## Photography and ownership
-
-The founder portraits are client-provided photographs. The remaining photography is the existing licensed web-image library already included in this repository. The six brand marks include the three previously developed directions and the three proportion-corrected Claude concepts.
+The final `index.html` has no local asset-path dependency. Google Fonts are loaded at runtime and fall back to standard serif and sans-serif families when unavailable.
